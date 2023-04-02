@@ -1,0 +1,91 @@
+<html>
+    <head>
+        <link rel = “stylesheet” type = “text/css” href = “main.css”>
+        <title> signup.html </title>
+        <style type = "text/css">
+            body {background-color:lightpink}
+            .btn { background-color:honeydew;
+                text-align: center;
+                padding: 3px;
+                margin-top: 20px;
+                margin-bottom: 20px;
+                border: 3px double navy;
+                width: 60px;
+                height: 40px;
+            }    
+        </style>
+    </head>
+    <body>
+        <h1 style = "text-align: center; font-size:30pt; font-family: Arial, Helvetica, sans-serif; color:brown"> Welcome to INTERNET-PROGRAMMING SHOP</h1>
+        <div style = "width:100%; text-align: center;">
+            저희 사이트에 방문해주심에 환영합니다. 회원가입을 해주시면 할인 쿠폰을 증정하고 있습니다!</div>
+    
+        <a class="btn" href = "file:///C:/Users/%EA%B6%8C%EC%84%B1%EC%9D%80/Desktop/%EC%83%88%20%ED%8F%B4%EB%8D%94/%EA%B3%B5%EB%B6%80/3-1/%EC%9D%B8%ED%84%B0%EB%84%B7%20%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/HomeworkRepository/LAB2/login.html"> 로그인</a>
+    
+        <form method = 'get' autocomplete = "on" action = "file:///C:/Users/%EA%B6%8C%EC%84%B1%EC%9D%80/Desktop/%EC%83%88%20%ED%8F%B4%EB%8D%94/%EA%B3%B5%EB%B6%80/3-1/%EC%9D%B8%ED%84%B0%EB%84%B7%20%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/HomeworkRepository/LAB2/login.html">
+            <p>개인정보 (필수)</p>
+            <p>
+                <label>이름: <input name = "이름" type = "text" placeholder = "이름을 입력하세요" 
+                    required />  </label>  
+            </p>        
+            <p>
+                <label>생일: <input name = "생일" type = "date" 
+                    required />  </label>  
+            </p>        
+            <p>
+                <label>전화번호: <input name = "tel" type = "tel" placeholder = "(###) ###-####" 
+                    required />  </label>  
+            </p>
+            <p>
+                <label>유저아이디: <input name = "유저아이디" type = "text" placeholder = "아이디를 입력하세요" 
+                    required />  </label>  
+            </p>
+            <p>
+                <label>비밀번호: <input name = "password" type = "password" placeholder = "비밀번호 입력하세요" 
+                    required />  </label>  
+            </p>
+            <p>
+                <label>비밀번호 확인: <input name = "password confirm" type = "password" placeholder = "비밀번호 확인" 
+                    required />  </label>  
+            </p>
+            <p>
+                <label>주소: <input name = "주소" type = "text" placeholder = "주소를 입력하세요" 
+                    required />  </label>  
+            </p>
+            <p>
+                <label>선호 색상 <input name = "color" type = "color" autofocus /> </label>  
+            </p>
+            <p>
+                <label>사이트 만족도: <input name = "satisfy" type = "range" min="0" max="5" step="1"> </label>  
+            </p>
+            <p> 
+                <strong> 사이트 이용 시 선호 요소: </strong> <br>
+                <label> site design 
+                    <input name = "thingsliked" type = "checkbox" value = "Design"> </label>
+                <label> Links
+                    <input name = "thingsliked" type = "checkbox" value = "Links"> </label>
+                <label> Ease of use 
+                    <input name = "thingsliked" type = "checkbox" value = "Ease"> </label>
+                <label> Images
+                        <input name = "thingsliked" type = "checkbox" value = "Images"> </label>
+                <label> Source code 
+                        <input name = "thingsliked" type = "checkbox" value = "Code"> </label>
+            </p>
+            <p>
+                <strong> 사이트 유입 이유: </strong> <br>
+                <label> Search engine
+                    <input name = "howto" type = "radio" value = "search engine" checked> </label>
+                <label> Links from another sites
+                    <input name = "howto" type = "radio" value = "link,"> </label>
+                <label> Reference in a book
+                    <input name = "howto" type = "radio" value = "book"> </label>
+                <label> Other
+                    <input name = "howto" type = "radio" value = "other"> </label>
+            </p>     
+            <p>
+                <input type = "submit" value = "sign up" style = "background-color:rgb(12, 222, 131)">
+                <input type = "reset" value = "cancel" style="background-color:rgb(243, 50, 150)">
+            </p>    
+        </form>
+    </body>
+</html>
