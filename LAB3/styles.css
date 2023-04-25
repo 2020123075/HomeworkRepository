@@ -1,0 +1,145 @@
+body { font-family: arial, helvetica, sans-serif;}
+
+
+
+.navigation {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+  .navigation ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .navigation li {
+    margin: 0 10px;
+  }
+  
+
+
+
+
+
+
+#slide {
+    animation-name: sliding;
+    animation-duration: 2s;
+ }
+@keyframes sliding {
+    0% {transform: translateX(100%);}
+    100% {transform: translateX(0);}
+}
+
+.container {
+    max-width: 1020px;
+    margin: 0 auto;
+}
+
+
+.product {
+    position: relative;
+    width: 200px;
+    height: 200px;
+    overflow: hidden;
+  }
+  
+  .product img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 2s;
+  }
+  
+  .product:hover img {
+    transform: scale(1.2);
+  }
+  
+  .product-info {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    transform: translateY(100%);
+    transition: transform 0.5s;
+  }
+  
+  .product:hover .product-info {
+    transform: translateY(0);
+  }
+
+
+
+
+
+
+
+  .main-content {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .content-row {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-bottom: 20px;
+  }
+  
+  .content-item {
+    width: 100px;
+    height: 100px;
+    background-color: #ccc;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    font-size: 24px;
+  }
+
+
+  .container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+  
+
+  .nav {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+  }
+  
+  .main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  
+
+  @media (max-width: 480px) {
+    .container {
+      flex-direction: column;
+    }
+    .nav {
+      order: -1;
+      align-self: center;
+    }
+  }
+  
+  @media (min-width: 481px) and (max-width: 800px) {
+    .nav {
+      order: -1;
+    }
+  }
+  
+
+  @media (min-width: 801px) {
+    .nav {
+      order: -1;
+    }
+  }
