@@ -1,0 +1,193 @@
+<html>
+<head>
+  <title>E-commerce Main Page</title>
+  <link rel="stylesheet" type="text/css" href="main.css">
+  <script src="main.js"></script>
+</head>
+<body>
+  <div class="container">
+    <h1>INTERNET-PROGRAMMING SHOP입니다.!</h1>
+    <header>
+      <nav class="navigation">
+          <ul>
+            <li><a href="file:///C:/Users/%EA%B6%8C%EC%84%B1%EC%9D%80/Desktop/%EA%B3%B5%EB%B6%80/3-1/%EC%9D%B8%ED%84%B0%EB%84%B7%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/HomeworkRepository/LAB4/index.html">메인페이지</a></li>
+            <li><a href="file:///C:/Users/%EA%B6%8C%EC%84%B1%EC%9D%80/Desktop/%EA%B3%B5%EB%B6%80/3-1/%EC%9D%B8%ED%84%B0%EB%84%B7%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/HomeworkRepository/LAB4/login.html">로그인</a></li>
+            <li><a href="file:///C:/Users/%EA%B6%8C%EC%84%B1%EC%9D%80/Desktop/%EA%B3%B5%EB%B6%80/3-1/%EC%9D%B8%ED%84%B0%EB%84%B7%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/HomeworkRepository/LAB4/signup.html">회원가입</a></li>
+          </ul>
+      </nav>
+    </header>
+    <input type="text" id="searchInput" placeholder="Search by keyword">
+    <select id="categoryFilter">
+      <option value="">All Categories</option>
+      <option value="Category A">A</option>
+      <option value="Category B">B</option>
+    </select>
+    <select id="sortSelect">
+      <option value="nameAsc">Name (오름차순)</option>
+      <option value="nameDesc">Name (내림차순)</option>
+    </select>
+
+    <div id="productContainer"></div>
+    <button id="loadMoreButton">Load More</button>
+
+    <div id="descriptionContainer"></div>
+
+    <div id="descriptionContainer"></div>
+    <div class="product-image">
+      <img src="product1.jpeg" alt="Product 1" class="product-image">
+      <img src="product2.jpeg" alt="Product 2" class="product-image">
+      <img src="product3.jpeg" alt="Product 3" class="product-image">
+      <img src="product4.jpg" alt="Product 4" class="product-image">
+      <img src="product5.jpg" alt="Product 5" class="product-image">
+    </div>
+
+    <script>
+      let isLoading = false;
+      let products = [];
+    
+      window.onload = function() {
+        fetchProductList();
+        window.addEventListener('scroll', handleScroll);
+      };
+    
+      function fetchProductList() {
+        // Simulating an asynchronous fetch
+        setTimeout(() => {
+          products = [
+            { name: 'Product 1', category: 'Category A', price: 10, description: 'Product 1 description' },
+            { name: 'Product 2', category: 'Category B', price: 20, description: 'Product 2 description' },
+            { name: 'Product 3', category: 'Category A', price: 30, description: 'Product 3 description' },
+            { name: 'Product 4', category: 'Category B', price: 40, description: 'Product 4 description' },
+            { name: 'Product 5', category: 'Category A', price: 50, description: 'Product 5 description' }
+          ];
+    
+          initialize(products);
+        }, 2000);
+      }
+    
+      function initialize(products) {
+        const productContainer = document.getElementById('productContainer');
+        const descriptionContainer = document.getElementById('descriptionContainer');
+        let displayedProducts = 0;
+    
+        function displayProducts(start, end) {
+          for (let i = start; i < end; i++) {
+            const product = products[i];
+            const productItem = document.createElement('div');
+            productItem.classList.add('productItem');
+    
+            const productImage = document.createElement('img');
+            productImage.src = product.image;
+            productImage.alt = product.name;
+            productImage.classList.add('product-image');
+            productItem.appendChild(productImage);
+    
+            const productName = document.createElement('h3');
+            productName.textContent = product.name;
+            productItem.appendChild(productName);
+    
+            const productCategory = document.createElement('p');
+            productCategory.textContent = `Category: ${product.category}`;
+            productItem.appendChild(productCategory);
+    
+            const productPrice = document.createElement('p');
+            productPrice.textContent = `Price: $${product.price}`;
+            productItem.appendChild(productPrice);
+    
+            productItem.addEventListener('click', () => {
+              showProductDescription(product);
+            });
+    
+            productContainer.appendChild(productItem);
+          }
+        }
+    
+        function loadMoreProducts() {
+          const loadCount = 2;
+          const end = displayedProducts + loadCount;
+    
+          if (end >= products.length) {
+            loadMoreButton.style.display = 'none';
+          }
+    
+          displayProducts(displayedProducts, end);
+          displayedProducts += loadCount;
+        }
+    
+        function showProductDescription(product) {
+          descriptionContainer.innerHTML = '';
+          
+          const productName = document.createElement('h3');
+          productName.textContent = product.name;
+          descriptionContainer.appendChild(productName);
+    
+          const productCategory = document.createElement('p');
+          productCategory.textContent = `Category: ${product.category}`;
+          descriptionContainer.appendChild(productCategory);
+    
+          const productPrice = document.createElement('p');
+          productPrice.textContent = `Price: $${product.price}`;
+      descriptionContainer.appendChild(productPrice);
+
+      const productDescription = document.createElement('p');
+      productDescription.textContent = product.description;
+      descriptionContainer.appendChild(productDescription);
+    }
+
+    const initialDisplayCount = 4;
+    displayProducts(displayedProducts, displayedProducts + initialDisplayCount);
+    displayedProducts += initialDisplayCount;
+
+    function handleScroll() {
+      if (isLoading) return;
+
+      const { innerHeight, scrollY } = window;
+      const { offsetHeight } = document.body;
+
+      if (innerHeight + scrollY >= offsetHeight) {
+        isLoading = true;
+        document.getElementById('loadingIndicator').style.display = 'block';
+        setTimeout(() => {
+          isLoading = false;
+          document.getElementById('loadingIndicator').style.display = 'none';
+          loadMoreProducts();
+        }, 2000);
+      }
+    }
+    function displayProductInfo(product) {
+    const productInfoContainer = document.getElementById('productInfoContainer');
+    productInfoContainer.innerHTML = ''; // Clear existing content
+
+    const productImage = document.createElement('img');
+    productImage.src = product.image;
+    productImage.alt = product.name;
+    productInfoContainer.appendChild(productImage);
+
+    const productName = document.createElement('h3');
+    productName.textContent = product.name;
+    productInfoContainer.appendChild(productName);
+
+    const productCategory = document.createElement('p');
+    productCategory.textContent = `Category: ${product.category}`;
+    productInfoContainer.appendChild(productCategory);
+
+    const productPrice = document.createElement('p');
+    productPrice.textContent = `Price: $${product.price}`;
+    productInfoContainer.appendChild(productPrice);
+
+    const productDescription = document.createElement('p');
+    productDescription.textContent = product.description;
+    productInfoContainer.appendChild(productDescription);
+  }
+
+  function handleProductClick(product) {
+    displayProductInfo(product);
+  }
+
+    const loadMoreButton = document.getElementById('loadMoreButton');
+    loadMoreButton.addEventListener('click', loadMoreProducts);
+  }
+</script>
+</div>
+</body>
+</html>

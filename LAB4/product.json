@@ -1,0 +1,44 @@
+{
+  "products": [
+    {
+      "id": 1,
+      "name": "Product 1",
+      "category": "Category A",
+      "price": 10.99,
+      "image": "product1.jpeg",
+      "description": "This is Product 1. It is a great product for your needs."
+    },
+    {
+      "id": 2,
+      "name": "Product 2",
+      "category": "Category B",
+      "price": 19.99,
+      "image": "product2.jpeg",
+      "description": "Product 2 is a high-quality item with multiple features."
+    },
+    {
+      "id": 3,
+      "name": "Product 3",
+      "category": "Category A",
+      "price": 8.99,
+      "image": "product3.jpeg",
+      "description": "Get Product 3 today and experience its amazing benefits."
+    },
+    {
+      "id": 4,
+      "name": "Product 4",
+      "category": "Category B",
+      "price": 15.99,
+      "image": "product4.jpg",
+      "description": "Product 4 is designed to meet all your requirements."
+    },
+    {
+      "id": 5,
+      "name": "Product 5",
+      "category": "Category A",
+      "price": 12.99,
+      "image": "product5.jpg",
+      "description": "Upgrade your life with Product 5 and enjoy its features."
+    }
+  ]
+}
