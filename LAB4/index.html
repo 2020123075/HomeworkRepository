@@ -23,22 +23,22 @@
       <option value="Category B">B</option>
     </select>
     <select id="sortSelect">
-      <option value="nameAsc">Name (오름차순)</option>
-      <option value="nameDesc">Name (내림차순)</option>
+      <option value="nameAsc">sort (오름차순)</option>
+      <option value="nameDesc">sort (내림차순)</option>
     </select>
 
     <div id="productContainer"></div>
     <button id="loadMoreButton">Load More</button>
 
     <div id="descriptionContainer"></div>
+    <div id="productInfoContainer"></div> 
 
-    <div id="descriptionContainer"></div>
     <div class="product-image">
-      <img src="product1.jpeg" alt="Product 1" class="product-image">
-      <img src="product2.jpeg" alt="Product 2" class="product-image">
-      <img src="product3.jpeg" alt="Product 3" class="product-image">
-      <img src="product4.jpg" alt="Product 4" class="product-image">
-      <img src="product5.jpg" alt="Product 5" class="product-image">
+      <img src="product1.jpeg" alt="Product 1" class="product-image" onclick="handleProductClick(0)">
+      <img src="product2.jpeg" alt="Product 2" class="product-image" onclick="handleProductClick(1)">
+      <img src="product3.jpeg" alt="Product 3" class="product-image" onclick="handleProductClick(2)">
+      <img src="product4.jpg" alt="Product 4" class="product-image" onclick="handleProductClick(3)">
+      <img src="product5.jpg" alt="Product 5" class="product-image" onclick="handleProductClick(4)">
     </div>
 
     <script>
@@ -54,11 +54,11 @@
         // Simulating an asynchronous fetch
         setTimeout(() => {
           products = [
-            { name: 'Product 1', category: 'Category A', price: 10, description: 'Product 1 description' },
-            { name: 'Product 2', category: 'Category B', price: 20, description: 'Product 2 description' },
-            { name: 'Product 3', category: 'Category A', price: 30, description: 'Product 3 description' },
-            { name: 'Product 4', category: 'Category B', price: 40, description: 'Product 4 description' },
-            { name: 'Product 5', category: 'Category A', price: 50, description: 'Product 5 description' }
+            { name: 'Product 1', category: 'Category A', price: 10, description: 'Product 1 description', image: 'product1.jpeg' },
+            { name: 'Product 2', category: 'Category B', price: 20, description: 'Product 2 description', image: 'product2.jpeg' },
+            { name: 'Product 3', category: 'Category A', price: 30, description: 'Product 3 description' ,image: 'product3.jpeg'},
+            { name: 'Product 4', category: 'Category B', price: 40, description: 'Product 4 description',image: 'product4.jpg' },
+            { name: 'Product 5', category: 'Category A', price: 50, description: 'Product 5 description',image: 'product5.jpg' }
           ];
     
           initialize(products);
@@ -181,6 +181,36 @@
   }
 
   function handleProductClick(product) {
+    displayProductInfo(product);
+  }
+  function displayProductInfo(product) {
+    const productInfoContainer = document.getElementById('productInfoContainer');
+    productInfoContainer.innerHTML = ''; // Clear existing content
+
+    const productImage = document.createElement('img');
+    productImage.src = product.image;
+    productImage.alt = product.name;
+    productInfoContainer.appendChild(productImage);
+
+    const productName = document.createElement('h3');
+    productName.textContent = product.name;
+    productInfoContainer.appendChild(productName);
+
+    const productCategory = document.createElement('p');
+    productCategory.textContent = `Category: ${product.category}`;
+    productInfoContainer.appendChild(productCategory);
+
+    const productPrice = document.createElement('p');
+    productPrice.textContent = `Price: $${product.price}`;
+    productInfoContainer.appendChild(productPrice);
+
+    const productDescription = document.createElement('p');
+    productDescription.textContent = product.description;
+    productInfoContainer.appendChild(productDescription);
+  }
+
+  function handleProductClick(index) {
+    const product = products[index];
     displayProductInfo(product);
   }
 
